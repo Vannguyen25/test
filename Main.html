@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Ivan Nguyen</title>
+	<style>
+		body {
+			font-family: Roboto;
+			margin: 0;
+			padding: 0;
+			background-color: #161616;
+			background-image: url(Dot_background.png);
+			background-size: 1%;
+			background-repeat: repeat;
+			text-align: center;
+			overflow-x: hidden;
+		}
+		.icon-top {
+			z-index: 3;
+			position: fixed;
+			bottom: 60px;
+			right: 2rem;
+			width: 2rem;
+			height: 2rem;
+			border-radius: 50px;
+			background-color: #c1151a;
+		}
+		.gradient-text {
+			color: transparent;
+			background-image: linear-gradient(30deg, #f0eeee, #6a6969);
+			-webkit-background-clip: text;
+			background-clip: text;
+		}
+		#main {
+			transform: translateY(-18px);
+			width: 100%;
+			height: 100vh;
+		}
+		.main_nav {
+			z-index: 1;
+			position: relative;
+			top: 0px;
+			width: 100%;
+			height: auto;
+			border-bottom: 1px solid rgb(154, 154, 154, 0.5) ;
+			display: flex;
+			align-content: center;
+			justify-content: space-between;
+		
+		}
+		.logo {
+			position: relative;
+			width: fit-content;
+			left: 2rem;
+			align-items: center;
+			font-weight: 1000;
+		}
+		.logo a {
+			position: absolute;
+			top: 50%;
+			transform: translateY(-50%);
+			text-decoration: none;
+			color: #9A9A9A;
+		}
+		.logo span {
+			color: #c1151a;
+		}
+		@media only screen and (width> 748px){
+		#link {
+			position: relative;
+			display: flex;
+			width: auto;
+			list-style: none;
+			flex-wrap: nowrap;
+			right: 5%;
+		}
+		#link a {
+			text-decoration: none;
+			color: #9A9A9A;
+			font-size: 0.8rem;
+			padding: 10px 20px;
+			transition: 0.2s linear;
+		}
+		#link a:hover {
+			background-color: rgb(212, 211, 211, 0.3);
+			border-radius: 5px;
+		}
+	}
+		@media only screen and (width<= 748px)
+		{
+			#main {
+				aspect-ratio: none;
+				height: fit-content;
+			}
+			.main_nav {
+				height: 40px;
+			}
+			.logo a {
+				padding: 10px 0px;
+			}
+			.main_link {
+ 			margin-top: 20px;
+  			width: 2rem;
+ 			height: 5px;
+ 			background: #9A9A9A;
+  			position: relative;
+			border-radius: 50px;
+			right: 10px;
+			}
+			.main_link::before,
+			.main_link::after {
+  content: '';
+  position: absolute;
+  width: 2rem;
+  height: 5px;
+  background: #9A9A9A;
+  border-radius: 50px;
+  right: 0px;
+			}
+			.main_link::before{	
+  top:-8px;
+			}
+			.main_link::after {
+  top: 8px;
+			}
+			#link {
+			display: none;
+				padding: 0;
+				-webkit-backdrop-filter: blur(10px); /* Safari 9+ */
+    			backdrop-filter: blur(10px); /* Chrome and Opera */
+    			background-color: rgb(36, 36, 36, 0.7);
+				width: 9rem;
+				height: auto;
+				position: absolute;
+				right: 0;
+				top: 4px;		
+				list-style: none;
+				border-radius: 5px;
+			}
+			#link li {
+				text-align: left;
+			padding: 7px;
+			border-bottom:1px solid #9A9A9A;
+			}
+			#link a {
+				text-decoration: none;
+				color: #9A9A9A;
+				font-size: 0.8rem;
+			}
+			.main_link:hover > #link {
+			display: block;
+			}
+		}
+		.avatar {
+			padding: absolute;
+			height: 80%;
+			display: grid;
+			grid-template-columns: repeat(2, 1fr);
+			text-align: center;
+			align-items: center;
+			
+		}
+		.avatar img {
+			width: 80%;
+			height:80%;
+			
+			object-fit: contain;
+
+		}
+		.avatar .text {
+			object-fit: fill;
+			position: relative;
+			top: 0px;
+			width: 90%;
+			height: fit-content;
+			left: 1rem;
+			text-align: left;
+			color: aliceblue;
+			word-wrap: break-word;
+			left: 2rem;
+			
+		}
+		.avatar .text span {
+			overflow: hidden;
+			width: fit-content;
+			position: relative;
+			color: #c1151a;
+		}
+		.avatar .text p {
+			width: 100%;
+		}
+		@media only screen and ( width<= 1000px )
+		{
+			#main {
+				height: fit-content;
+			}
+			.avatar {
+				width: 100%;
+				display: grid;
+				grid-template-columns: 1fr;
+				grid-template-rows: repeat(auto-fit, minmax(200px, 1fr)));
+				gap: 2rem;
+				overflow-x: hidden;
+				
+			}
+			.avatar .text {
+				width: 80%;
+			}
+			.avatar img {
+				justify-self: center;
+				margin-bottom: 100px;
+			}
+		}
+		.welcome {
+			transform: translateY(20px);
+		}
+		.introduce {
+			font-size: 4rem;
+			word-wrap: break-word;
+		}
+		.text p {
+			
+			font-family: Helvetica;
+		}
+		#button-git {
+			align-items: center;
+			gap: 0.5rem;
+			border: 1px solid #8D8D8D;
+			height: fit-content;
+			border-radius: 50px;
+			background-color: #1A1A1A;
+			backdrop-filter: blur(20px);
+			overflow: hidden;
+		}
+		#button-git::before {
+			content: "";
+			position: absolute;
+			left: 0;
+			width: 0%;
+			height: 100%;
+			background-color: rgb(85, 85, 85);
+			transition: 0.3s ease;
+			z-index: -1;
+		}
+		#button-git:hover::before {
+			width: 100%;
+			scale : 1.1;
+		}
+		.text a {
+			display: flex;
+			align-items: center;
+			padding: 10px 4px;
+			gap: 5px;
+		}
+		.text svg {
+			right: 0;
+		}
+		@media only screen and ( width > 848px )
+		{
+		.about {
+			margin-bottom: 100px;
+			position: relative;
+			
+			width: auto;
+			height: 400px;
+			display: grid;
+			grid-template-columns: 30% 70%;
+			align-items: center;
+			background-color: rgb(141, 4, 9);
+			gap: 3rem;
+			overflow: hidden;
+			font-size: 1.1rem;
+		}
+		#about-avt img {
+			transform: translateX(2rem);
+		}
+	}
+		#about-avt img {
+			width: 100%;
+			height: auto;
+			object-fit: contain;
+			
+		}
+		.information {
+			
+			width: fit-content
+		}
+		 p {
+			width: 90%;
+			word-wrap: break-word;
+			-ms-word-wrap: break-word;
+			font-weight: lighter;
+			text-align: left;
+			font-family: Helvetica, sans-serif;
+		 }
+		 #about-avt li {
+			text-align: left;
+		 }
+		 #base-infor {
+			border-collapse: collapse;
+			text-align: left;
+		 }
+		
+		 @media only screen and ( width<= 848px )
+		{
+			.about {
+				width: 100%;
+				display: grid;
+				grid-template-columns: 1fr;
+				grid-template-rows: repeat(auto-fit, minmax(200px, 1fr)));
+				gap: 2rem;
+				background-color: rgb(141, 4, 9);
+				overflow-x: hidden;
+				
+			}
+			#about-avt {
+				object-fit: cover;
+				width: 70%;
+				justify-self: center;
+			}
+			#about-avt img {
+				width: 70%;
+				padding-top: 30px;
+			}
+			.information {
+				width : 90%;
+				transform: translateX(2rem);
+			}
+			.information td {
+			word-wrap: break-word;
+			}
+			table {
+				width: 90%;
+				object-fit: contain;
+			}
+			td {
+				display: inline-block;
+				word-wrap: break-word;
+			}
+			.td-width {
+				width: 30%;
+				float: left;
+			}
+		}
+		.ab {
+		position: relative;
+		margin-top: 100px;
+		font-size: 3rem;
+		font-weight:400;
+		} 
+		.Experience-section {
+			transform: translateY(10px);
+			height: calc(100% + 20px);
+			height: -webkit-calc(100% + 20px);
+			display: flex;
+			justify-content: center;
+			margin-bottom: 20px;
+		}
+		.experience {
+			position: relative;
+			height: calc(100% + 20px);
+			width: 95%;
+			display: flex;
+			flex-direction: column;
+			gap: 15px;
+		}
+		.experience-base {
+			position: relative;
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+			justify-content: space-around;
+			gap: 15px;
+		}
+		
+		.experience-about {
+			color: aliceblue;
+			padding: 50px 0px 30px;
+			width: 100%;
+			min-height: 12rem;
+			max-height: 16rem;
+			border: 0.5px solid rgb(141, 141, 141,0.5);
+			border-radius: 7px;
+			background-color: #1A1A1A;
+			backdrop-filter: blur(20px);
+			transition: 0.2s linear;
+		}
+		.experience-about:hover {
+			transform: scale(0.98);
+			background-color: #303030;
+		}
+		
+		@media (max-width: 848px) {
+ 	 .experience-base { grid-template-columns: repeat(2, 1fr); }
+		}
+
+/* Screen larger than 900px? 3 columns */
+		@media (min-width: 848px) {
+  		.experience-base { grid-template-columns: repeat(4, 1fr); }
+		}
+		
+		.experience-about  p {
+			font-family: Roboto, sans-serif ;
+			padding: 0;
+			width: auto;
+			padding-right: 2rem;
+			padding-left: 2rem;
+		}
+		.newtitle {
+			font-weight: bold;
+			font-size: 1.1rem;
+		}
+		.in{
+			font-weight: 700;
+			font-size: 0.8rem;
+		}
+		.icon {
+			justify-items: left;
+		}
+		.contact-section {
+			transform: translateY(150px);
+			width: 100%;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			align-content: center;
+			height: 100%;
+			overflow: hidden;
+		}
+		.line {
+			width: 80%;
+			height: 0.5px;
+			background-color: rgb(154, 154, 154, 0.5);
+			margin-bottom: 50px;
+		}
+		.contact-me {
+			font-size: 3rem;
+		}
+		.gettouch-platform {
+			width: 300px;
+			display: flex;
+			justify-content: space-between;
+			height: 30px;
+		}
+		.gettouch-platform span {
+			margin: 0px 15px;
+			float: left;
+		}
+		.form-contact {
+			transform: translateY(20px);
+		}
+		form {
+			display: flex;
+			flex-direction: column;
+			width: 60vw;
+			font-family: roboto;
+			height: fit-content;
+		}
+		.input {
+			display: flex;
+			justify-content: space-between;
+			margin-bottom: 5px;
+			height: fit-content;
+		}
+		.input input{
+			height: 30px;
+			width: 32%;
+			outline: none;
+			border-radius: 5px;
+			padding: 10px;
+			background-color: #f2f2f2;
+			font-size: 1.2rem;
+		}
+		textarea{
+			outline: none;
+			width: calc(.input)
+			font-size: 2rem;
+			outline: none;
+			border-radius: 5px;
+			font-family: roboto;
+			padding: 10px;
+			background-color: #f2f2f2;
+			resize: none;
+		}
+		::placeholder {
+			font-family: roboto;
+		}
+		input[type="submit"] {
+			margin-top: 10px;
+			margin-bottom: 50px;
+			height: 50px;
+			width: 100px;
+			align-self: center;
+			border: 0.5px solid #8D8D8D;
+			border-radius: 50px;
+			backdrop-filter: blur(20px);
+			font-weight: bold;
+			font-family: roboto;
+			border-radius: 20px;
+		}
+		input[type="submit"]:hover{
+			border: 1.5px solid #8D8D8D;
+			scale: 1.1;
+		}
+		@media (max-width: 848px) {
+			.input {
+				display: flex;
+				flex-direction: column;
+			}
+			.input input {
+				width: 100%;
+			}
+			textarea {
+				width: 100%;
+			}
+		}
+		.footer {
+			width: 100%;
+			background-color: #c1151a;
+			height: 50px;
+			position: relative;
+		}
+		h4 {
+			vertical-align: center;
+		}
+		.footer span {
+			display: inline-block;
+			width: 10px;
+			height: 20px;
+			position: relative;
+		}
+		.footer span::before{
+			content: "C";
+			position: absolute;
+			font-size: 0.75rem;
+			font-weight: bold;
+			width: 15px;
+			height: 15px;
+			border: 1px solid #f2f2f2;
+			color: #f2f2f2;
+			border-radius: 50px;
+			top: -30%;
+			left: -5px;
+		}
+	</style>
+</head>
+<body>
+	<br>
+	<div class="icon-top"><a href="#main"><svg xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512"><path fill="none" stroke="#1A1A1A" stroke-linecap="round" stroke-linejoin="round" stroke-width="48" d="M112 328l144-144 144 144"/></svg></a></div>
+	<div id="main">
+		<nav class="main_nav">
+			<div class="logo"><a href="Main.html"><span>IVAN</span>Nguyen</a></div>
+			<div class="main_link">	
+				<ul id="link">
+				<li class="link_href"><a href="Main.html">Main </a></li>
+				<li class="link_href"><a href="#">About me </a></li>
+				<li class="link_href"><a href="#">Experience </a></li>
+				<li class="link_href"><a href="#">Education </a></li>
+
+			</ul>
+		</div>
+		</nav> 
+		<div class="avatar">
+			<div class="text" style="font-family:  Helvetica, sans-serif;">
+				<h1 class="welcome gradient-text">Welcome!</h1>
+				<h1 class="introduce gradient-text">
+						I am a <span class="animation-text">Developer</span>
+				</h1>
+				<p class="gradient-text">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ad eum in reprehenderit quidem! Reiciendis doloribus voluptatibus rem aperiam incidunt quidem tempore vitae aliquam iste quia quas repudiandae, vel debitis facilis!</p><br>
+				<button id="button-git"> <a href="https://github.com/Vannguyen25" target="_blank" class="gradient-text">Visit my Github <?xml version="1.0" ?><svg class="feather feather-arrow-up-right" fill="none" height="24" stroke="#8D8D8D" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><line x1="7" x2="17" y1="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a>
+					
+				</button>
+			</div>
+			<img src="avatar.jpg" alt="Ảnh">
+		</div>
+	</div>
+	
+	<div class="about">
+		<div id="about-avt"> <img src="avatar.jpg" alt="Ảnh"></div>
+		<div class="information gradient-text">
+			<p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tempore dignissimos reprehenderit illum laudantium perferendis cupiditate, quia autem consectetur molestias eligendi, eum libero? Itaque, voluptatem sapiente! Quisquam velit delectus aut laudantium.</p>
+			<table id="base-infor">
+			<tr>
+				<td class="td-width"><strong>Full name</strong></td>
+				<td>: Nguyễn Anh Văn</td>
+			</tr>
+			<tr>
+				<td class="td-width"><strong>Age</strong></td>
+				<td>: 19</td>
+			</tr>
+			<tr>
+				<td class="td-width"><strong>Address</strong></td>
+				<td>: Hai Bà Trưng, Hà Nội</td>
+			</tr>
+			<tr>
+				<td class="td-width"><strong>Phone</strong></td>
+				<td>: 0856714230</td>
+			</tr>
+			<tr style="word-wrap: break-word;">
+				<td class="td-width"><strong>Email</strong></td>
+				<td row-span="2">: nguyenanhvan25022005@gmail.com</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+			</tr>
+			</table>
+		</div>
+	</div>
+
+	<section class="Experience-section">
+	<div class="experience">
+		<p class="gradient-text" style="text-align: center; width: 100%; font-size: 3rem;"><strong>What I do</strong></p>
+		<div class="experience-base">
+			<div class="experience-about">
+				<div class="icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"  width="50" height="50"><g><path  fill="#8D8D8D" d="M24,19V4a3,3,0,0,0-3-3H3A3,3,0,0,0,0,4V19H11v2H6v2H18V21H13V19ZM3,3H21a1,1,0,0,1,1,1v9H2V4A1,1,0,0,1,3,3ZM2,15H22v2H2Z"/></g></svg>
+				</div>
+				<div class="newtitle gradient-text"><p>UI & UX</p> </div>
+				<div class="in gradient-text"><p style="text-align: left;">Designing interfaces that are intuitive, efficient, and enjoyable to use.</p></div>
+			</div>
+
+
+			<div class="experience-about ">
+				<div class="icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"  width="50" height="50"><g><path d="M21 1H3a3 3 0 0 0-3 3v19h24V4a3 3 0 0 0-3-3zM3 3h18a1 1 0 0 1 1 1v3H2V4a1 1 0 0 1 1-1zM2 21V9h20v12zm3-9h14v2H5zm0 4h10v2H5zM3 5a1 1 0 1 1 1 1 1 1 0 0 1-1-1zm3 0a1 1 0 1 1 1 1 1 1 0 0 1-1-1zm3 0a1 1 0 1 1 1 1 1 1 0 0 1-1-1z" fill="#8D8D8D" opacity="1"></path></g></svg>
+			</div>
+			<div class="newtitle gradient-text"><p>Web & Mobile App</p> </div>
+			<div class="in gradient-text"><p style="text-align: left;">Transforming ideas into exceptional web and mobile app experiences.</p></div></div>
+			<div class="experience-about "><div class="icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"  width="50" height="50"><g><path d="M12.083 24A12 12 0 0 1 3.745 3.371 11.885 11.885 0 0 1 12.5.007 12.155 12.155 0 0 1 24.08 11.7a11.924 11.924 0 0 1-.775 4.552 1.888 1.888 0 0 1-1.377 1.177 1.912 1.912 0 0 1-1.769-.521l-.1-.1a3.567 3.567 0 0 0-6.089 2.553l.04 4.516-.924.077c-.333.024-.665.046-1.003.046Zm0-22a10 10 0 0 0-.09 20l-.024-2.625A5.6 5.6 0 0 1 13.6 15.39a5.57 5.57 0 0 1 7.872 0l.014.014a9.892 9.892 0 0 0 .595-3.655 10.127 10.127 0 0 0-9.645-9.743C12.317 2 12.2 2 12.082 2Z" fill="#8d8d8d" opacity="1" data-original="#000000" class=""></path></g></svg>
+			</div>
+
+
+			<div class="newtitle gradient-text"><p>Design & Creative</p> </div>
+			<div class="in gradient-text"><p style="text-align: left;">Crafting visually stunning designs that connect with your audience.</p></div></div>
+			<div class="experience-about"><div class="icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"  width="50" height="50"><g><path d="M22 17V5h-3v2h1v10h-4.914l-1 1H9.914l-1-1H4V7h1V5H2v12H0v3c0 1.654 1.346 3 3 3h18c1.654 0 3-1.346 3-3v-3h-2Zm0 3c0 .552-.449 1-1 1H3c-.551 0-1-.448-1-1v-1h6.086l1 1h5.828l1-1H22v1ZM7.304 9.866l1.41-.814A4.49 4.49 0 0 0 11 10.379V12h2v-1.621a4.479 4.479 0 0 0 2.286-1.327l1.41.814 1-1.732-1.416-.817c.129-.419.219-.855.219-1.317s-.09-.897-.219-1.317l1.416-.817-1-1.732-1.41.814A4.49 4.49 0 0 0 13 1.621V0h-2v1.621a4.479 4.479 0 0 0-2.286 1.327l-1.41-.814-1 1.732 1.416.817c-.129.419-.219.855-.219 1.317s.09.897.219 1.317l-1.416.817 1 1.732ZM12 3.5c1.378 0 2.5 1.121 2.5 2.5S13.378 8.5 12 8.5 9.5 7.379 9.5 6s1.122-2.5 2.5-2.5Z" fill="#8d8d8d" opacity="1" data-original="#000000" class=""></path></g></svg>
+			</div>
+			<div class="newtitle gradient-text"><p>Development</p> </div>
+			<div class="in gradient-text"><p style="text-align: left;">Bringing your vision to life with the latest technology and design trends.</p></div></div>
+		</div>
+	</div>
+	 </section>
+	
+
+	 <section class="contact-section">
+		<div class="line"></div>
+		<h1 class="gradient-text contact-me">Get in touch</h1>
+		<div class="gettouch-platform">
+			<span><a href="https://www.facebook.com/avan.nguyen123" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="30" height="30" viewBox="0 0 50 50"
+				style="fill:#8D8D8D;">
+					<path d="M41,4H9C6.24,4,4,6.24,4,9v32c0,2.76,2.24,5,5,5h32c2.76,0,5-2.24,5-5V9C46,6.24,43.76,4,41,4z M37,19h-2c-2.14,0-3,0.5-3,2 v3h5l-1,5h-4v15h-5V29h-4v-5h4v-3c0-4,2-7,6-7c2.9,0,4,1,4,1V19z"></path>
+				</svg></a></span>
+			<span><a href="https://github.com/Vannguyen25" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="30" height="30" viewBox="0 0 50 50"
+				style="fill:#8D8D8D;">
+					<path d="M17.791,46.836C18.502,46.53,19,45.823,19,45v-5.4c0-0.197,0.016-0.402,0.041-0.61C19.027,38.994,19.014,38.997,19,39 c0,0-3,0-3.6,0c-1.5,0-2.8-0.6-3.4-1.8c-0.7-1.3-1-3.5-2.8-4.7C8.9,32.3,9.1,32,9.7,32c0.6,0.1,1.9,0.9,2.7,2c0.9,1.1,1.8,2,3.4,2 c2.487,0,3.82-0.125,4.622-0.555C21.356,34.056,22.649,33,24,33v-0.025c-5.668-0.182-9.289-2.066-10.975-4.975 c-3.665,0.042-6.856,0.405-8.677,0.707c-0.058-0.327-0.108-0.656-0.151-0.987c1.797-0.296,4.843-0.647,8.345-0.714 c-0.112-0.276-0.209-0.559-0.291-0.849c-3.511-0.178-6.541-0.039-8.187,0.097c-0.02-0.332-0.047-0.663-0.051-0.999 c1.649-0.135,4.597-0.27,8.018-0.111c-0.079-0.5-0.13-1.011-0.13-1.543c0-1.7,0.6-3.5,1.7-5c-0.5-1.7-1.2-5.3,0.2-6.6 c2.7,0,4.6,1.3,5.5,2.1C21,13.4,22.9,13,25,13s4,0.4,5.6,1.1c0.9-0.8,2.8-2.1,5.5-2.1c1.5,1.4,0.7,5,0.2,6.6c1.1,1.5,1.7,3.2,1.6,5 c0,0.484-0.045,0.951-0.11,1.409c3.499-0.172,6.527-0.034,8.204,0.102c-0.002,0.337-0.033,0.666-0.051,0.999 c-1.671-0.138-4.775-0.28-8.359-0.089c-0.089,0.336-0.197,0.663-0.325,0.98c3.546,0.046,6.665,0.389,8.548,0.689 c-0.043,0.332-0.093,0.661-0.151,0.987c-1.912-0.306-5.171-0.664-8.879-0.682C35.112,30.873,31.557,32.75,26,32.969V33 c2.6,0,5,3.9,5,6.6V45c0,0.823,0.498,1.53,1.209,1.836C41.37,43.804,48,35.164,48,25C48,12.318,37.683,2,25,2S2,12.318,2,25 C2,35.164,8.63,43.804,17.791,46.836z"></path>
+				</svg></a></span>
+			
+			<span><a href="" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="30" height="30" viewBox="0 0 50 50"
+				style="fill:#8D8D8D;">
+				<path d="M 9 4 C 6.2504839 4 4 6.2504839 4 9 L 4 41 C 4 43.749516 6.2504839 46 9 46 L 41 46 C 43.749516 46 46 43.749516 46 41 L 46 9 C 46 6.2504839 43.749516 4 41 4 L 9 4 z M 9 6 L 15.580078 6 C 12.00899 9.7156859 10 14.518083 10 19.5 C 10 24.66 12.110156 29.599844 15.910156 33.339844 C 16.030156 33.549844 16.129922 34.579531 15.669922 35.769531 C 15.379922 36.519531 14.799687 37.499141 13.679688 37.869141 C 13.249688 38.009141 12.97 38.430859 13 38.880859 C 13.03 39.330859 13.360781 39.710781 13.800781 39.800781 C 16.670781 40.370781 18.529297 39.510078 20.029297 38.830078 C 21.379297 38.210078 22.270625 37.789609 23.640625 38.349609 C 26.440625 39.439609 29.42 40 32.5 40 C 36.593685 40 40.531459 39.000731 44 37.113281 L 44 41 C 44 42.668484 42.668484 44 41 44 L 9 44 C 7.3315161 44 6 42.668484 6 41 L 6 9 C 6 7.3315161 7.3315161 6 9 6 z M 33 15 C 33.55 15 34 15.45 34 16 L 34 25 C 34 25.55 33.55 26 33 26 C 32.45 26 32 25.55 32 25 L 32 16 C 32 15.45 32.45 15 33 15 z M 18 16 L 23 16 C 23.36 16 23.700859 16.199531 23.880859 16.519531 C 24.050859 16.829531 24.039609 17.219297 23.849609 17.529297 L 19.800781 24 L 23 24 C 23.55 24 24 24.45 24 25 C 24 25.55 23.55 26 23 26 L 18 26 C 17.64 26 17.299141 25.800469 17.119141 25.480469 C 16.949141 25.170469 16.960391 24.780703 17.150391 24.470703 L 21.199219 18 L 18 18 C 17.45 18 17 17.55 17 17 C 17 16.45 17.45 16 18 16 z M 27.5 19 C 28.11 19 28.679453 19.169219 29.189453 19.449219 C 29.369453 19.189219 29.65 19 30 19 C 30.55 19 31 19.45 31 20 L 31 25 C 31 25.55 30.55 26 30 26 C 29.65 26 29.369453 25.810781 29.189453 25.550781 C 28.679453 25.830781 28.11 26 27.5 26 C 25.57 26 24 24.43 24 22.5 C 24 20.57 25.57 19 27.5 19 z M 38.5 19 C 40.43 19 42 20.57 42 22.5 C 42 24.43 40.43 26 38.5 26 C 36.57 26 35 24.43 35 22.5 C 35 20.57 36.57 19 38.5 19 z M 27.5 21 C 27.39625 21 27.29502 21.011309 27.197266 21.03125 C 27.001758 21.071133 26.819727 21.148164 26.660156 21.255859 C 26.500586 21.363555 26.363555 21.500586 26.255859 21.660156 C 26.148164 21.819727 26.071133 22.001758 26.03125 22.197266 C 26.011309 22.29502 26 22.39625 26 22.5 C 26 22.60375 26.011309 22.70498 26.03125 22.802734 C 26.051191 22.900488 26.079297 22.994219 26.117188 23.083984 C 26.155078 23.17375 26.202012 23.260059 26.255859 23.339844 C 26.309707 23.419629 26.371641 23.492734 26.439453 23.560547 C 26.507266 23.628359 26.580371 23.690293 26.660156 23.744141 C 26.819727 23.851836 27.001758 23.928867 27.197266 23.96875 C 27.29502 23.988691 27.39625 24 27.5 24 C 27.60375 24 27.70498 23.988691 27.802734 23.96875 C 28.487012 23.82916 29 23.22625 29 22.5 C 29 21.67 28.33 21 27.5 21 z M 38.5 21 C 38.39625 21 38.29502 21.011309 38.197266 21.03125 C 38.099512 21.051191 38.005781 21.079297 37.916016 21.117188 C 37.82625 21.155078 37.739941 21.202012 37.660156 21.255859 C 37.580371 21.309707 37.507266 21.371641 37.439453 21.439453 C 37.303828 21.575078 37.192969 21.736484 37.117188 21.916016 C 37.079297 22.005781 37.051191 22.099512 37.03125 22.197266 C 37.011309 22.29502 37 22.39625 37 22.5 C 37 22.60375 37.011309 22.70498 37.03125 22.802734 C 37.051191 22.900488 37.079297 22.994219 37.117188 23.083984 C 37.155078 23.17375 37.202012 23.260059 37.255859 23.339844 C 37.309707 23.419629 37.371641 23.492734 37.439453 23.560547 C 37.507266 23.628359 37.580371 23.690293 37.660156 23.744141 C 37.739941 23.797988 37.82625 23.844922 37.916016 23.882812 C 38.005781 23.920703 38.099512 23.948809 38.197266 23.96875 C 38.29502 23.988691 38.39625 24 38.5 24 C 38.60375 24 38.70498 23.988691 38.802734 23.96875 C 39.487012 23.82916 40 23.22625 40 22.5 C 40 21.67 39.33 21 38.5 21 z"></path>
+				</svg></a></span>
+			<span><a href="" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="30" height="30" viewBox="0 0 50 50"
+style="fill:#8D8D8D;">
+    <path d="M 16 3 C 8.83 3 3 8.83 3 16 L 3 34 C 3 41.17 8.83 47 16 47 L 34 47 C 41.17 47 47 41.17 47 34 L 47 16 C 47 8.83 41.17 3 34 3 L 16 3 z M 37 11 C 38.1 11 39 11.9 39 13 C 39 14.1 38.1 15 37 15 C 35.9 15 35 14.1 35 13 C 35 11.9 35.9 11 37 11 z M 25 14 C 31.07 14 36 18.93 36 25 C 36 31.07 31.07 36 25 36 C 18.93 36 14 31.07 14 25 C 14 18.93 18.93 14 25 14 z M 25 16 C 20.04 16 16 20.04 16 25 C 16 29.96 20.04 34 25 34 C 29.96 34 34 29.96 34 25 C 34 20.04 29.96 16 25 16 z"></path>
+</svg></a></span>
+		</div>
+
+		<div class="form-contact">
+			<form action="">
+				<div class="input"><input type="text" id="firname" placeholder="Name">
+				<input type="tel" id="Phone" placeholder="Phone">
+				<input type="email" id="email" placeholder="Email"></div>
+				<textarea placeholder="Write something" rows="9"></textarea>
+				<input class="gradient-text" type="submit">
+			</form>
+		</div>
+		<div class="line"></div>
+		<section class="footer">
+			<h4 style="color: #f2f2f2; font-weight: lighter;">Copyright <span></span> by Van Nguyen</h4>
+		</section>
+	 </section>
+
+	 
+</body>
+</html>
